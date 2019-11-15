@@ -1,17 +1,35 @@
 package com.remedios.appremedios.Model;
 
-public class PacienteModel {
-    private int id;
+import java.io.Serializable;
+import java.util.Random;
+
+public class PacienteModel implements Serializable {
+    private long id;
     private String nome;
     private String sobreNome;
     private String idade;
     private String telefone;
     private String endereco;
 
-    public PacienteModel() {
+    public PacienteModel(String nome, String sobreNome, String idade, String telefone, String endereco) {
+        this.id = new Random().nextInt(9999);
+        this.nome = nome;
+        this.sobreNome = sobreNome;
+        this.idade = idade;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
-    public int getId() {
+    public PacienteModel(long id, String nome, String sobreNome, String idade, String telefone, String endereco) {
+        this.id = id;
+        this.endereco = endereco;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.idade = idade;
+        this.sobreNome = sobreNome;
+    }
+
+    public long getId() {
         return id;
     }
 

@@ -5,20 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Remedio">
+    tools:context=".RemedioActivity">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:text="Cadastro Medicamentos"
-        android:paddingVertical="35dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:fontFamily="cursive"
-        android:textColor="#0000FF"
-        android:background="@drawable/cadastromedicamentos"
+        android:layout_height="155dp"
         android:layout_marginBottom="25dp"
-        />
+        android:background="@drawable/cadastromedicamentos"
+        android:fontFamily="cursive"
+        android:paddingVertical="35dp"
+        android:text="Cadastro Medicamentos"
+        android:textAlignment="center"
+        android:textColor="#0000FF"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView13"
@@ -28,13 +27,12 @@
         android:text="Nome Medicamento" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/edtNomeMedicamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView14"
@@ -44,13 +42,12 @@
         android:text="Laboratório" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/edtLaboratorio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView15"
@@ -60,13 +57,12 @@
         android:text="Descrição" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/edtDescricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView17"
@@ -75,40 +71,49 @@
         android:layout_marginHorizontal="30dp"
         android:text="Classe Terapeutica" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <EditText
+        android:id="@+id/edtClasseTerapeutica"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"/>
-
+        android:layout_marginHorizontal="30dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tipos Medicamentos"
-        android:layout_marginHorizontal="30dp"/>
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="Tipos Medicamentos" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Generico"
-        android:layout_marginHorizontal="30dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:orientation="horizontal">
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Similar"
-        android:layout_marginHorizontal="30dp"/>
 
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Etico"
-        android:layout_marginHorizontal="30dp"/>
+        <RadioButton
+            android:id="@+id/rdGenerico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Generico" />
+
+        <RadioButton
+            android:id="@+id/rdSimilar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Similar" />
+
+        <RadioButton
+            android:id="@+id/rdEtico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Etico" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnCadastrarRemedio"
@@ -119,6 +124,5 @@
         android:layout_gravity="center"
         android:background="@drawable/btnsalvarmedicamentos"
         android:text="Cadastrar" />
-
 
 </LinearLayout>

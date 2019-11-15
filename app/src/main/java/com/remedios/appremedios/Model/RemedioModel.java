@@ -1,12 +1,66 @@
 package com.remedios.appremedios.Model;
 
-public class RemedioModel {
+import java.io.Serializable;
+import java.util.Random;
+
+public class RemedioModel implements Serializable {
     private int id;
     private String nomeRemedio;
     private String laboratorio;
     private String descricao;
     private String classeTerapeuta;
-    private String tiposMedicamentos;
+    private String generico;
+    private String similar;
+    private String etico;
+
+    public RemedioModel(String nomeRemedio, String laboratorio, String descricao, String classeTerapeuta, String generico, String similar, String etico) {
+        this.id = new Random().nextInt(9999);
+        this.nomeRemedio = nomeRemedio;
+        this.laboratorio = laboratorio;
+        this.descricao = descricao;
+        this.classeTerapeuta = classeTerapeuta;
+        this.generico = generico;
+        this.similar = similar;
+        this.etico = etico;
+    }
+
+    public RemedioModel(int id,String nomeRemedio, String laboratorio, String descricao, String classeTerapeuta, String generico, String similar, String etico) {
+        this.id = id;
+        this.nomeRemedio = nomeRemedio;
+        this.laboratorio = laboratorio;
+        this.descricao = descricao;
+        this.classeTerapeuta = classeTerapeuta;
+        this.generico = generico;
+        this.similar = similar;
+        this.etico = etico;
+    }
+
+    public RemedioModel() {
+    }
+
+    public String getGenerico() {
+        return generico;
+    }
+
+    public void setGenerico(String generico) {
+        this.generico = generico;
+    }
+
+    public String getSimilar() {
+        return similar;
+    }
+
+    public void setSimilar(String similar) {
+        this.similar = similar;
+    }
+
+    public String getEtico() {
+        return etico;
+    }
+
+    public void setEtico(String etico) {
+        this.etico = etico;
+    }
 
     public int getId() {
         return id;
@@ -48,11 +102,4 @@ public class RemedioModel {
         this.classeTerapeuta = classeTerapeuta;
     }
 
-    public String getTiposMedicamentos() {
-        return tiposMedicamentos;
-    }
-
-    public void setTiposMedicamentos(String tiposMedicamentos) {
-        this.tiposMedicamentos = tiposMedicamentos;
-    }
 }

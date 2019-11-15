@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "620855492906",
+    "firebase_url": "https://appremedio.firebaseio.com",
+    "project_id": "appremedio",
+    "storage_bucket": "appremedio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620855492906:android:4084fd5d82dab7ca82de53",
+        "android_client_info": {
+          "package_name": "com.remedios.appremedios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620855492906-6bt17mccea3e2au9n1mffaq1hutre9cp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.remedios.appremedios",
+            "certificate_hash": "9adc8e63de0272b40dc8b044852c2833662025bc"
+          }
+        },
+        {
+          "client_id": "620855492906-tar3ou5on98n54v8163fdm3icfecj6dh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3jiDmrmAMDujNpq0W8V7FcPuMloqmpTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620855492906-tar3ou5on98n54v8163fdm3icfecj6dh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

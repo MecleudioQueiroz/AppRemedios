@@ -1,6 +1,9 @@
 package com.remedios.appremedios.Model;
 
-public class UsuarioModel {
+import java.io.Serializable;
+import java.util.Random;
+
+public class UsuarioModel implements Serializable {
     private int id;
     private String nome;
     private String senha;
@@ -16,6 +19,20 @@ public class UsuarioModel {
 
     public String getNome() {
         return nome;
+    }
+
+    public UsuarioModel(String nome, String senha, String repitaSenha) {
+        this.id = new Random().nextInt(9999);
+        this.nome = nome;
+        this.senha = senha;
+        this.repitaSenha = repitaSenha;
+    }
+
+    public UsuarioModel(int id, String nome, String senha, String repitaSenha) {
+        this.id = id;
+        this.nome = nome;
+        this.senha = senha;
+        this.repitaSenha = repitaSenha;
     }
 
     public void setNome(String nome) {

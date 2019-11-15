@@ -1,14 +1,29 @@
 package com.remedios.appremedios.Model;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class MedicoModel implements Serializable {
-    private int id;
+    private long id;
     private String nome;
     private String crm;
     private String especificacao;
 
-    public int getId() {
+    public MedicoModel(String nome, String crm, String especificacao) {
+        this.id = new Random().nextInt(9999);
+        this.nome = nome;
+        this.crm = crm;
+        this.especificacao = especificacao;
+    }
+
+    public MedicoModel(long id, String nome, String crm, String especificacao) {
+        this.id = id;
+        this.nome = nome;
+        this.crm = crm;
+        this.especificacao = especificacao;
+    }
+
+    public long getId() {
         return id;
     }
 
