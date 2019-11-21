@@ -1,29 +1,16 @@
 package com.remedios.appremedios.Model;
 
 import java.io.Serializable;
-import java.util.Random;
+import java.sql.Time;
 
 public class LiberacaoModel implements Serializable {
     private int Id;
-    private MedicoModel medico;
-    private PacienteModel paciente;
-    private RemedioModel remedio;
+    private String medico;
+    private String paciente;
+    private String remedio;
+    private Time Data;
 
-    public LiberacaoModel(String nome, String paciente, String remedio) {
-        this.Id = new Random().nextInt(9999);
-        this.medico = medico;
-        this.paciente = paciente;
-        this.remedio = remedio;
-    }
-
-    public LiberacaoModel(long id, String nome, String crm, String especificacao) {
-        this.id = id;
-        this.nome = nome;
-        this.crm = crm;
-        this.especificacao = especificacao;
-    }
-
-    public LiberacaoModel() {
+    public LiberacaoModel(int i, String remedio) {
     }
 
     public int getId() {
@@ -34,27 +21,35 @@ public class LiberacaoModel implements Serializable {
         Id = id;
     }
 
-    public MedicoModel getMedico() {
+    public String getMedico() {
         return medico;
     }
 
-    public void setMedico(MedicoModel medico) {
+    public void setMedico(String medico) {
         this.medico = medico;
     }
 
-    public PacienteModel getPaciente() {
+    public String getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(PacienteModel paciente) {
+    public void setPaciente(String paciente) {
         this.paciente = paciente;
     }
 
-    public RemedioModel getRemedio() {
+    public String getRemedio() {
         return remedio;
     }
 
-    public void setRemedio(RemedioModel remedio) {
+    public void setRemedio(String remedio) {
         this.remedio = remedio;
+    }
+
+    public Time getData() {
+        return Data;
+    }
+
+    public void setData(Time data) {
+        Data = data;
     }
 }

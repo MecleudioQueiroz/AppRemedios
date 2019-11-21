@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 public void liberaco(View view){
-        Intent intent = new Intent(MainActivity.this, Liberacao.class);
+        Intent intent = new Intent(MainActivity.this, LiberacaoActivity.class);
         startActivity(intent);
         }
  public  void cadastro(View view){

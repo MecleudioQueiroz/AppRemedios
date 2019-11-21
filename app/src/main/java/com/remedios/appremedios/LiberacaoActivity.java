@@ -1,101 +1,82 @@
 package com.remedios.appremedios;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.remedios.appremedios.Model.LiberacaoModel;
+import com.remedios.appremedios.Model.PacienteModel;
 
-public class LiberacaoActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.ArrayList;
+import java.util.List;
 
-    private FirebaseDatabase firebaseDatabase;
+public class LiberacaoActivity extends AppCompatActivity{
+
     private DatabaseReference db;
-    private LiberacaoModel liberacaoModel;
-    private Spinner spinnerPaciente,spinnerMedico,spinnerRemedio;
-    private Button btnCadastrarLiberacao;
+    private List<LiberacaoModel> liberacaoModels;
+    private Spinner spinnerpaciente, spinnermedico, spinnerremedio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liberacao);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        db = firebaseDatabase.getReference("LiberacaoModel");
+        db = FirebaseDatabase.getInstance().getReference().child("liberacaoModels");
+        popularLiberacao();
 
-        initViews();
-        pegandoClienteDoBundle();
-    }
-
-    protected void initViews() {
-        spinnerMedico = findViewById(R.id.spinnerMedico);
-        spinnerPaciente = findViewById(R.id.spinnerPaciente);
-        spinnerRemedio = findViewById(R.id.spinnerRemedio);
-
-        btnCadastrarLiberacao = findViewById(R.id.btnCadastrarLiberacao);
-        btnCadastrarLiberacao.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        if(v.getId() == R.id.btnCadastrarMedico) {
-            initModel();
-            SalvarMedico();
-        }else{
-            Remover();
-        }
-        finish();
+        liberacaoModels = new ArrayList<LiberacaoModel>();
+        spinnerpaciente = findViewById(R.id.spPaciente);
+        spinnermedico = findViewById(R.id.spinnerMedico);
+        spinnerremedio = findViewById(R.id.spinnerMedico);
+        popularSpinner();
     }
 
 
-    private void SalvarMedico() {
-        db.child(String.valueOf(medicoModel.getId())).setValue(medicoModel);
-        showToast("Medico Salvo com sucesso");
-    }
+    public void popularSpinner(){
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                liberacaoModels.clear();
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    LiberacaoModel liberacaoModel = objSnapshot.getValue(LiberacaoModel.class);
+                    liberacaoModels.add(liberacaoModel);
+                }
 
-    protected void initModel() {
-        if(medicoModel == null){
-            medicoModel = new MedicoModel(edtNomeMedico.getText().toString().trim(),
-                    edtCrmMedico.getText().toString().trim(),
-                    edtEspecificacaoMedico.getText().toString().trim());
-        }
-        else{
-            medicoModel = new MedicoModel(medicoModel.getId(),edtNomeMedico.getText().toString().trim(),
-                    edtCrmMedico.getText().toString().trim(),
-                    edtEspecificacaoMedico.getText().toString().trim());
-        }
-    }
+                spinnerpaciente.setAdapter(new ArrayAdapter<LiberacaoModel>(LiberacaoActivity.this, android.R.layout.simple_list_item_1, liberacaoModels));
+                spinnermedico.setAdapter(new ArrayAdapter<LiberacaoModel>(LiberacaoActivity.this, android.R.layout.simple_list_item_1, liberacaoModels));
+                spinnerremedio.setAdapter(new ArrayAdapter<LiberacaoModel>(LiberacaoActivity.this, android.R.layout.simple_list_item_1, liberacaoModels));
 
-    private void showToast(String message) {
-        Toast.makeText(this,
-                message,
-                Toast.LENGTH_LONG)
-                .show();
-    }
-
-    private void pegandoClienteDoBundle() {
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            medicoModel = (MedicoModel) bundle.getSerializable("medicoModel");
-            if (medicoModel != null) {
-                edtNomeMedico.setText(medicoModel.getNome());
-                edtCrmMedico.setText(medicoModel.getCrm());
-                edtEspecificacaoMedico.setText(medicoModel.getEspecificacao());
             }
-        }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
-    private void Remover(){
-        db.child(String.valueOf(medicoModel.getId())).removeValue();
-        finish();
+
+    private void popularLiberacao(){
+   //     SalvarLiberacao(new LiberacaoModel(1, "paciente"));
+  //      SalvarLiberacao(new LiberacaoModel(2, "medico"));
+  //      SalvarLiberacao(new LiberacaoModel(3, "remedio"));
+    }
+
+    private void SalvarLiberacao(LiberacaoModel liberacaoModel){
+        db.child(String.valueOf(liberacaoModel.getId())).setValue(liberacaoModel);
     }
 }
