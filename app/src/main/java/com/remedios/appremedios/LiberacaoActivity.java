@@ -71,9 +71,9 @@ public class LiberacaoActivity extends AppCompatActivity{
 
 
     private void popularLiberacao(){
-   //     SalvarLiberacao(new LiberacaoModel(1, "paciente"));
-  //      SalvarLiberacao(new LiberacaoModel(2, "medico"));
-  //      SalvarLiberacao(new LiberacaoModel(3, "remedio"));
+        SalvarLiberacao(new LiberacaoModel(1, "paciente"));
+        SalvarLiberacao(new LiberacaoModel(2, "medico"));
+        SalvarLiberacao(new LiberacaoModel(3, "remedio"));
     }
 
     private void SalvarLiberacao(LiberacaoModel liberacaoModel){
